@@ -44,16 +44,16 @@ jobs:
         username: ${{ secrets.AZURE_CLIENT_ID }}
         password: ${{ secrets.AZURE_CLIENT_SECRET }}
         
-    - name: Extract metadata
-      id: meta
-      uses: docker/metadata-action@v5
-      with:
-        images: ${{ env.AZURE_REGISTRY }}/${{ env.IMAGE_NAME }}
-        tags: |
-          type=ref,event=branch
-          type=ref,event=pr
-          type=sha,prefix=sha-
-          type=raw,value=latest,enable={{is_default_branch}}
+    # - name: Extract metadata
+    #   id: meta
+    #   uses: docker/metadata-action@v5
+    #   with:
+    #     images: ${{ env.AZURE_REGISTRY }}/${{ env.IMAGE_NAME }}
+    #     tags: |
+    #       type=ref,event=branch
+    #       type=ref,event=pr
+    #       type=sha,prefix=sha-
+    #       type=raw,value=latest,enable={{is_default_branch}}
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v5
@@ -61,6 +61,6 @@ jobs:
         context: .
         file: ./AzureWebApp/Dockerfile
         push: true
-        tags: ${{ steps.meta.outputs.tags }}
+        tags: run-${{ github.run_number }}
         labels: ${{ steps.meta.outputs.labels }}
         platforms: linux/amd64
