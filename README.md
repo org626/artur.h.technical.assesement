@@ -1,0 +1,1 @@
+# artur.homan.technical.assesement
