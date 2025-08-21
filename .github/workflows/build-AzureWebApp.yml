@@ -11,7 +11,7 @@ env:
   IMAGE_NAME: azurewebapp
 
 jobs:
-  build-and-publish:
+  build-and-publish-azurewebapp:
     runs-on: ubuntu-latest
     
     steps:
