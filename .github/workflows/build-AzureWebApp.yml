@@ -61,6 +61,6 @@ jobs:
         context: .
         file: ./AzureWebApp/Dockerfile
         push: true
-        tags: 1.${{ github.run_number }}
+        tags: ${{ steps.meta.outputs.tags }} #1.${{ github.run_number }}
         labels: ${{ steps.meta.outputs.labels }}
         platforms: linux/amd64
