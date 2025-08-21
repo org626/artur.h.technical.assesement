@@ -23,11 +23,11 @@ jobs:
       with:
         dotnet-version: '9.0.x'
         
-    # - name: Restore dependencies
-    #   run: dotnet restore AzureWebApp/AzureWebApp.csproj
+    - name: Restore dependencies
+      run: dotnet restore AzureWebApp/AzureWebApp.csproj
       
-    # - name: Build application
-    #   run: dotnet build AzureWebApp/AzureWebApp.csproj -c Release --no-restore
+    - name: Build application
+      run: dotnet build AzureWebApp/AzureWebApp.csproj -c Release --no-restore
       
     - name: Publish application
       run: dotnet publish AzureWebApp/AzureWebApp.csproj -c Release -o AzureWebApp/bin/Release/net9.0/publish --no-build
