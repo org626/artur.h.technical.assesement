@@ -1,0 +1,6 @@
+resource_group_name = "rg-awareson-dev"
+resource_group_location = "Central US"
+service_plan_name = "ap-awareson-dev"
+linux_web_app_name = "ap-awareson-dev"
+postgresql_flexible_server_name = "pss9999"
+postgresql_flexible_server_database_name = "default"

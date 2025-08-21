@@ -1,0 +1,27 @@
+stages:
+  - build
+  - publish
+
+variables:
+  AZURE_REGISTRY: arturzure.azurecr.io
+  IMAGE_NAME: azurewebapp
+  IMAGE_TAG: $CI_COMMIT_SHORT_SHA
+
+before_script:
+  - apt-get update && apt-get install -y curl
+  - curl -sL https://aka.ms/InstallAzureCLIDeb | bash
+  - az login --service-principal --username $AZURE_CLIENT_ID --password $AZURE_CLIENT_SECRET --tenant $AZURE_TENANT_ID
+  - docker login $AZURE_REGISTRY -u 00000000-0000-0000-0000-000000000000 -p "$(az acr login --name arturzure --expose-token --output tsv --query accessToken)"
+
+build:
+  stage: build
+  image: mcr.microsoft.com/dotnet/sdk:9.0
+  script:
+    - dotnet publish AzureWebApp/AzureWebApp.csproj -c Release -o AzureWebApp/bin/Release/net9.0/publish
+    - docker build -t $AZURE_REGISTRY/$IMAGE_NAME:$IMAGE_TAG .
+
+publish:
+  stage: publish
+  image: docker:latest
+  script:
+    - docker push $AZURE_REGISTRY/$IMAGE_NAME:$IMAGE_TAG

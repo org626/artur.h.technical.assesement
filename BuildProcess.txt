@@ -1,0 +1,27 @@
+#1
+dotnet publish AzureWebApp.csproj -c Release -o bin/Release/net9.0/publish
+
+#2
+
+#remote
+az acr login -n arturzure --expose-token
+az acr build --registry arturzure --image azurewebapp:1.0 --file .
+
+
+#Docker
+docker build -t arturzure.azurecr.io/azurewebapp:1.0 .
+az acr login --name arturzure
+docker push arturzure.azurecr.io/azurewebapp:1.0
+
+#Podman
+podman build -t arturzure.azurecr.io/azurewebapp:1.0 .
+az acr login --name arturzure --expose-token
+$token = az acr login --name arturzure --expose-token --output tsv --query accessToken
+podman login arturzure.azurecr.io -u 00000000-0000-0000-0000-000000000000 -p $token
+podman push arturzure.azurecr.io/azurewebapp:1.0
+
+
+
+
+#
+az ad sp create-for-rbac --name "gitlab-ci-sp" --role contributor --scopes /subscriptions/09079f78-9f6f-4361-a6cc-bf28835ae172

@@ -1,0 +1,15 @@
+@{
+    ViewData["Title"] = "Main Page";
+}
+<h2>Main Page</h2>
+<form method="post">
+    <div>
+        <label for="column">Column:</label>
+        <input type="text" id="column" name="column" required />
+    </div>
+    <button type="submit">Save</button>
+</form>
+@if (ViewBag.Message != null)
+{
+    <p style="color:green">@ViewBag.Message</p>
+}
