@@ -8,6 +8,10 @@ on:
     branches:
       - main
 
+permissions:
+  id-token: write
+  contents: read
+
 env:
   AZURE_REGISTRY: arturzure.azurecr.io
   IMAGE_NAME: azurewebapp
