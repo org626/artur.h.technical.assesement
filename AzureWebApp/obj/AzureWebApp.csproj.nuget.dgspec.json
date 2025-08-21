@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\repo\\artur.homan.technical.assesement\\AzureWebApp\\AzureWebApp.csproj": {}
+    "C:\\repo\\artur.homan.technical.assesement3\\AzureWebApp\\AzureWebApp.csproj": {}
   },
   "projects": {
-    "C:\\repo\\artur.homan.technical.assesement\\AzureWebApp\\AzureWebApp.csproj": {
+    "C:\\repo\\artur.homan.technical.assesement3\\AzureWebApp\\AzureWebApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\repo\\artur.homan.technical.assesement\\AzureWebApp\\AzureWebApp.csproj",
+        "projectUniqueName": "C:\\repo\\artur.homan.technical.assesement3\\AzureWebApp\\AzureWebApp.csproj",
         "projectName": "AzureWebApp",
-        "projectPath": "C:\\repo\\artur.homan.technical.assesement\\AzureWebApp\\AzureWebApp.csproj",
+        "projectPath": "C:\\repo\\artur.homan.technical.assesement3\\AzureWebApp\\AzureWebApp.csproj",
         "packagesPath": "C:\\Users\\ahoman\\.nuget\\packages\\",
-        "outputPath": "C:\\repo\\artur.homan.technical.assesement\\AzureWebApp\\obj\\",
+        "outputPath": "C:\\repo\\artur.homan.technical.assesement3\\AzureWebApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ahoman\\AppData\\Roaming\\NuGet\\NuGet.Config"

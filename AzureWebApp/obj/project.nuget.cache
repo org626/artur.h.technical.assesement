@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4Ok8aHjSwWk=",
+  "dgSpecHash": "Vzhuap7tgvA=",
   "success": true,
-  "projectFilePath": "C:\\repo\\artur.homan.technical.assesement\\AzureWebApp\\AzureWebApp.csproj",
+  "projectFilePath": "C:\\repo\\artur.homan.technical.assesement3\\AzureWebApp\\AzureWebApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ahoman\\.nuget\\packages\\microsoft.entityframeworkcore\\9.0.1\\microsoft.entityframeworkcore.9.0.1.nupkg.sha512",
     "C:\\Users\\ahoman\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\9.0.1\\microsoft.entityframeworkcore.abstractions.9.0.1.nupkg.sha512",
