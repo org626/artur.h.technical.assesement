@@ -8,6 +8,7 @@ namespace AzureWebApp.Controllers
     public class CheckController : Controller
     {
         private readonly AppDbContext _context;
+        
         public CheckController(AppDbContext context)
         {
             _context = context;
@@ -15,19 +16,19 @@ namespace AzureWebApp.Controllers
 
         public async Task<IActionResult> Index()
         {
-            string status;
             try
             {
                 await _context.Database.OpenConnectionAsync();
-                status = "Database connection successful.";
                 await _context.Database.CloseConnectionAsync();
+                
+                // Return HTTP 200 with success message
+                return Ok("connection is established");
             }
             catch
             {
-                status = "Database connection failed.";
+                // Return HTTP 400 with error message
+                return BadRequest("database is unreachable");
             }
-            ViewBag.Status = status;
-            return View();
         }
     }
 }
