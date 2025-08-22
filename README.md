@@ -34,6 +34,10 @@ Then Test stage process **DVT** using **check** status page.
 Infrastructure is created based on "Initial task details" and contains: Azure App Svc, PostgreSQL database, Network resource and etc.<br>
 **arturazuretfstate** storage account is used as Terraform state file storage.
 
+Deployed resources, e.g.:
+![alt text](image-3.png)
+
+
 ### Provision process
 Infrastructure is provisioned with **provision-AzureWebApp2.yml** pipeline which consist of 3 actions:<br>
 1. Terraform Plan
