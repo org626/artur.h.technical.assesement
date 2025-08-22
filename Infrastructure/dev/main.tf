@@ -57,6 +57,11 @@ resource "azurerm_postgresql_flexible_server" "server" {
   private_dns_zone_id           = azurerm_private_dns_zone.postgres.id
   public_network_access_enabled = false
 
+  high_availability {
+    mode                      = "ZoneRedundant"
+    standby_availability_zone = "2" 
+  }
+
   depends_on = [
     azurerm_resource_group.rga,
     azurerm_subnet.backend,

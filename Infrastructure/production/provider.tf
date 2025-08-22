@@ -14,7 +14,7 @@ terraform {
     resource_group_name  = "rg-system"
     storage_account_name = "arturazuretfstate"
     container_name       = "terraform"
-    key                  = "awaresome-dev.tfstate"
+    key                  = "awaresome-prod.tfstate"
   }
 
 }
