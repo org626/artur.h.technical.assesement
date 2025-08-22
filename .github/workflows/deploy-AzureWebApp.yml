@@ -67,25 +67,31 @@ jobs:
         echo "Testing Check page endpoint: $CHECK_URL"
         
         # Wait for application to be ready and get response
-        for i in {1..5}; do
-          RESPONSE=$(curl -s --max-time 30 "$CHECK_URL" 2>/dev/null || echo "CONNECTION_FAILED")
+        for i in {1..3}; do
+          # Get HTTP status code and response body
+          HTTP_STATUS=$(curl -s -o response.txt -w "%{http_code}" "$CHECK_URL" 2>/dev/null || echo "000")
+          RESPONSE_BODY=$(cat response.txt 2>/dev/null || echo "")
           
-          if [ "$RESPONSE" != "CONNECTION_FAILED" ]; then
-            echo "✅ Check page is responding"
-            echo "Response received: $RESPONSE"
+          if [ "$HTTP_STATUS" != "000" ]; then
+            echo "Check page is responding"
+            echo "HTTP Status: $HTTP_STATUS"
+            echo "Response: $RESPONSE_BODY"
             
-            # Check if response contains "failed" (case insensitive)
-            if echo "$RESPONSE" | grep -qi "failed"; then
-              echo "❌ Check page returned FAILED status - Stage: RED"
+            # Check HTTP status code for success/failure
+            if [ "$HTTP_STATUS" = "200" ]; then
+              echo "Check page returned HTTP 200 - Database connection successful - Stage: GREEN"
+              exit 0
+            elif [ "$HTTP_STATUS" = "400" ]; then
+              echo "Check page returned HTTP 400 - Database is unreachable - Stage: RED"
               exit 1
             else
-              echo "✅ Check page returned SUCCESS status - Stage: GREEN"
-              exit 0
+              echo "Check page returned unexpected HTTP status: $HTTP_STATUS"
+              exit 1
             fi
           else
             echo "⏳ Attempt $i: Check page not responding, waiting 30 seconds..."
-            if [ $i -eq 5 ]; then
-              echo "❌ Check page connection failed after 5 attempts - Stage: RED"
+            if [ $i -eq 3 ]; then
+              echo "Check page connection failed after 3 attempts - Stage: RED"
               exit 1
             fi
             sleep 30
@@ -95,7 +101,7 @@ jobs:
     - name: Deployment Summary
       if: always()
       run: |
-        echo "🚀 Deployment Summary:"
+        echo "Deployment Summary:"
         echo "- Web App: ${{ env.AZURE_WEBAPP_NAME }}"
         echo "- Image: ${{ env.AZURE_REGISTRY }}/${{ env.IMAGE_NAME }}:main"
         echo "- URL: https://${{ env.AZURE_WEBAPP_NAME }}.azurewebsites.net"
