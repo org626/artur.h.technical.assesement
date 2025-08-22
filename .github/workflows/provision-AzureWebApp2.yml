@@ -50,5 +50,4 @@ jobs:
           path: ./Infrastructure/dev/
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve
-        working-directory: ./Infrastructure/dev/
+        run: terraform -chdir=./Infrastructure/dev/ apply tfplan.out
