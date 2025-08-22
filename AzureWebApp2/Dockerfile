@@ -1,16 +1,6 @@
-FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS runtime
 WORKDIR /app
 EXPOSE 80
-
-FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
-WORKDIR /src
-COPY ["AzureWebApp2.csproj", "./"]
-RUN dotnet restore "./AzureWebApp2.csproj"
-COPY . .
-RUN dotnet publish "AzureWebApp2.csproj" -c Release -o /app/publish
-
-FROM base AS final
-WORKDIR /app
-COPY --from=build /app/publish .
+COPY ./AzureWebApp2/bin/Release/net9.0/publish/ .
 ENV ASPNETCORE_URLS=http://+:80
 ENTRYPOINT ["dotnet", "AzureWebApp2.dll"]
