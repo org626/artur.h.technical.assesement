@@ -1,7 +1,7 @@
 resource_group_name = "rg-awareson-dev"
 resource_group_location = "Central US"
 service_plan_name = "asp-dev"
-service_plan_sku_name = "B2"
+service_plan_sku_name = "F1"
 linux_web_app_name = "ap-awareson-dev"
 postgresql_flexible_server_name = "pss9999"
 postgresql_flexible_server_database_name = "default"
