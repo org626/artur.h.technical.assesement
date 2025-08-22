@@ -22,10 +22,13 @@ Application uses Azure Postgresql database.
 Build process (**build-AzureWebApp2.yml**) has the default "dotnet publish" command and container image upload to ACR.
 Used ACR: arturzure.azurecr.io  
 
+![alt text](image-2.png)
+
 ### Deployment and DVT
 Deployment process (**deploy-AzureWebApp2.yml**) deploy the recent main-branch image from ACR to App Service.
 Then Test stage process **DVT** using **check** status page.
 
+![alt text](image-1.png)
 
 ## Infrastructure
 Infrastructure is created based on "Initial task details" and contains: Azure App Svc, PostgreSQL database, Network resource and etc.<br>
@@ -37,6 +40,7 @@ Infrastructure is provisioned with **provision-AzureWebApp2.yml** pipeline which
 2. Manual Plan output review
 3. Terraform Apply
 
+![alt text](image.png)
 
 ## Initial task details
 
