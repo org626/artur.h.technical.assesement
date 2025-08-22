@@ -19,20 +19,23 @@ There is dotnet application with 3 pages: root, check, info.<br>
 Application uses Azure Postgresql database.
 
 ### Build 
-Build process has the default "dotnet publish" command and container image upload to ACR.
+Build process (**build-AzureWebApp2.yml**) has the default "dotnet publish" command and container image upload to ACR.
 Used ACR: arturzure.azurecr.io  
 
 ### Deployment and DVT
-
+Deployment process (**deploy-AzureWebApp2.yml**) deploy the recent main-branch image from ACR to App Service.
+Then Test stage process **DVT** using **check** status page.
 
 
 ## Infrastructure
-
+Infrastructure is created based on "Initial task details" and contains: Azure App Svc, PostgreSQL database, Network resource and etc.<br>
+**arturazuretfstate** storage account is used as Terraform state file storage.
 
 ### Provision process
-
-
-
+Infrastructure is provisioned with **provision-AzureWebApp2.yml** pipeline which consist of 3 actions:<br>
+1. Terraform Plan
+2. Manual Plan output review
+3. Terraform Apply
 
 
 ## Initial task details
