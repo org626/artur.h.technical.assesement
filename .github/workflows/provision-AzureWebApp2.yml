@@ -28,9 +28,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: tfplan-artifacts
-          path: |
-            ./Infrastructure/dev/tfplan.out
-            ./Infrastructure/dev/.terraform.lock.hcl
+          path: ./Infrastructure/dev/
+            # ./Infrastructure/dev/tfplan.out
+            # ./Infrastructure/dev/.terraform.lock.hcl
 
   terraform-apply:
     runs-on: ubuntu-latest
