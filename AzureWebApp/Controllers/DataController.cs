@@ -1,32 +1,44 @@
 using AzureWebApp.Data;
 using AzureWebApp.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
 namespace AzureWebApp.Controllers
 {
-    public class DataController : Controller
+    public class InfoController : Controller
     {
         private readonly AppDbContext _context;
-        public DataController(AppDbContext context)
+        
+        public InfoController(AppDbContext context)
         {
             _context = context;
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var infoItems = await _context.InfoItems.ToListAsync();
+            return View(infoItems);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(string column)
+        public async Task<IActionResult> Update(string column)
         {
-            var info = new Info { Column = column };
-            _context.InfoItems.Add(info);
-            await _context.SaveChangesAsync();
-            ViewBag.Message = "Info saved!";
-            return View();
+            if (!string.IsNullOrEmpty(column))
+            {
+                var info = new Info { Column = column };
+                _context.InfoItems.Add(info);
+                await _context.SaveChangesAsync();
+                ViewBag.Message = "INFO table updated successfully!";
+            }
+            else
+            {
+                ViewBag.Message = "Please provide a valid value.";
+            }
+            
+            var infoItems = await _context.InfoItems.ToListAsync();
+            return View("Index", infoItems);
         }
     }
 }
