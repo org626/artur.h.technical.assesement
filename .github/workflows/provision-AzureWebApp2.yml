@@ -51,5 +51,8 @@ jobs:
             name: tfplan-artifacts
             path: ./Infrastructure/dev/
 
+      - name: Terraform Init
+        run: terraform -chdir=./Infrastructure/dev/ init
+
       - name: Terraform Apply
-        run: terraform -chdir=./Infrastructure/dev/ apply tfplan.out
+        run: terraform -chdir=./Infrastructure/dev/ apply -auto-approve
