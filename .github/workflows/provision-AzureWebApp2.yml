@@ -24,11 +24,13 @@ jobs:
       - name: Terraform Plan
         run: terraform -chdir=./Infrastructure/dev/ plan -out=tfplan.out
 
-      - name: Upload Terraform Plan Artifact
+      - name: Upload Terraform Plan and Lock Files
         uses: actions/upload-artifact@v4
         with:
-          name: tfplan
-          path: ./Infrastructure/dev/tfplan.out
+          name: tfplan-artifacts
+          path: |
+            ./Infrastructure/dev/tfplan.out
+            ./Infrastructure/dev/.terraform.lock.hcl
 
   terraform-apply:
     runs-on: ubuntu-latest
@@ -46,8 +48,8 @@ jobs:
       - name: Download Terraform Plan Artifact
         uses: actions/download-artifact@v4
         with:
-          name: tfplan
-          path: ./Infrastructure/dev/
+            name: tfplan-artifacts
+            path: ./Infrastructure/dev/
 
       - name: Terraform Apply
         run: terraform -chdir=./Infrastructure/dev/ apply tfplan.out
