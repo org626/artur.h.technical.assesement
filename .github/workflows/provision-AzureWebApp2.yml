@@ -1,0 +1,50 @@
+name: Provision AzureWebApp2 Infrastructure
+
+on:
+  workflow_dispatch:
+
+jobs:
+  terraform-plan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init
+        run: terraform -chdir=./Infrastructure/dev/ init
+
+      - name: Terraform Plan
+        run: terraform -chdir=./Infrastructure/dev/ plan -out=tfplan.out
+
+      - name: Upload Terraform Plan Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: tfplan
+          path: ./Infrastructure/dev/tfplan.out
+
+  terraform-apply:
+    runs-on: ubuntu-latest
+    needs: terraform-plan
+    environment: manual-approval
+    steps:
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Download Terraform Plan Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: tfplan
+          path: ./Infrastructure/dev/
+
+      - name: Terraform Apply
+        run: terraform -chdir=./Infrastructure/dev/ apply tfplan.out -auto-approve
