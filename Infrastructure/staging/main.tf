@@ -51,6 +51,7 @@ resource "azurerm_postgresql_flexible_server" "server" {
   administrator_password = "H@Sh1CoR3!"
   storage_mb             = 32768
   sku_name               = "GP_Standard_D4s_v3"
+  zone                   = "1"
 
   # Configure for private access
   delegated_subnet_id           = azurerm_subnet.backend.id

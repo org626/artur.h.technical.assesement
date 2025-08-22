@@ -44,60 +44,30 @@ Infrastructure is provisioned with **provision-AzureWebApp2.yml** pipeline which
 
 Task Overview
 
- 
-
 1. Deploy an Application on Azure (Use Free Account)
-
 - Create an Azure App Service that connects to a MySQL or PostgreSQL database using a private endpoint.
-
 - The application should have a basic UI that interacts with the database (e.g., storing and retrieving data).
-
 - Provide a simple web application (Node.js, Python, or any preferred language).
-
 - Implement a test that verifies the database connection.
-
 - All these Azure Resources should be created thought Infrastructure as Code (Terraform)
 
-
-
 3. Containerization
-
 - Package the application into a Docker image.
-
 - Provide a Dockerfile to build and run the application locally.
-
-- Run the application in a Docker container to ensure functionality.
-
- 
+- Run the application in a Docker container to ensure functionality. 
 
 4. Infrastructure as Code (Terraform)
-
 - Write a Terraform script that allows the infrastructure to be deployed in different environments (e.g., dev, staging, production).
-
 - The script should provision:
-
     - Azure App Service
-
     - Azure Database (MySQL/PostgreSQL)
-
     - Vnet, Subnets
-
     - Private Endpoint
-
-- Ensure variables can be used for different configurations.
-
- 
+- Ensure variables can be used for different configurations. 
 
 5. CI/CD Pipeline (Use Free Account)
-
 Create a GitLab CI/CD or GitHub Actions pipeline to automate the following:
-
 - Build and push the Docker image to a container registry (Azure Container Registry or Docker Hub).
-
 - Deploy the Terraform infrastructure.
-
 - Deploy the application to Azure App Service.
-
 - Run some simple tests to verify the application.
-
-
