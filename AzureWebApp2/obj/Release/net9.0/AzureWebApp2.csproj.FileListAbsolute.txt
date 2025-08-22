@@ -1,0 +1,9 @@
+C:\repo\artur.homan.technical.assesement3\AzureWebApp2\obj\Release\net9.0\rpswa.dswa.cache.json
+C:\repo\artur.homan.technical.assesement3\AzureWebApp2\obj\Release\net9.0\AzureWebApp2.GeneratedMSBuildEditorConfig.editorconfig
+C:\repo\artur.homan.technical.assesement3\AzureWebApp2\obj\Release\net9.0\AzureWebApp2.AssemblyInfoInputs.cache
+C:\repo\artur.homan.technical.assesement3\AzureWebApp2\obj\Release\net9.0\AzureWebApp2.AssemblyInfo.cs
+C:\repo\artur.homan.technical.assesement3\AzureWebApp2\obj\Release\net9.0\AzureWebApp2.csproj.CoreCompileInputs.cache
+C:\repo\artur.homan.technical.assesement3\AzureWebApp2\obj\Release\net9.0\AzureWebApp2.MvcApplicationPartsAssemblyInfo.cache
+C:\repo\artur.homan.technical.assesement3\AzureWebApp2\obj\Release\net9.0\AzureWebApp2.RazorAssemblyInfo.cache
+C:\repo\artur.homan.technical.assesement3\AzureWebApp2\obj\Release\net9.0\AzureWebApp2.RazorAssemblyInfo.cs
+C:\repo\artur.homan.technical.assesement3\AzureWebApp2\obj\Release\net9.0\AzureWebApp2.sourcelink.json
