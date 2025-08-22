@@ -1,6 +1,9 @@
 name: Provision AzureWebApp2 Infrastructure
 
 on:
+  push:
+    paths:
+      - 'Infrastructure/**'
   workflow_dispatch:
 
 jobs:
