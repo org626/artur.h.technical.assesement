@@ -137,7 +137,8 @@ resource "azurerm_private_dns_zone" "postgres" {
   resource_group_name = azurerm_resource_group.rga.name
 
   depends_on = [
-    azurerm_resource_group.rga
+    azurerm_resource_group.rga,
+    azurerm_virtual_network.vnet
   ]
 }
 

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Read connection string from environment variable
+// Read connection string from environment variable "DATABASE_URL"
 var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
 if (string.IsNullOrEmpty(databaseUrl))
 {
