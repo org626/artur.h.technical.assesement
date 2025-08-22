@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AzureWebApp2")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d5d81147400f6dfa3ee75786759813fde96970cf")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+db5d03ed2f4a1dedd3ff5980bbc196f62b615193")]
 [assembly: System.Reflection.AssemblyProductAttribute("AzureWebApp2")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AzureWebApp2")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
